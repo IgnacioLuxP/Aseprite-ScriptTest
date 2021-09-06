@@ -15,22 +15,28 @@ function restoreTagNames(_baseTags, _sprite)
 	end
 end
 
+------------------------------------------------------------
+
 sprite = app.activeSprite
 local baseTags = cacheTags(sprite)
 
 --read the original tag's last frame
 print("Original last frameNumber: " .. sprite.tags[2].toFrame.frameNumber)
+
 --extend the last tag by 1 frame
 sprite:newEmptyFrame()
 print("Modified last frameNumber: " .. sprite.tags[2].toFrame.frameNumber)
+
 --change frame number with cached copy
 sprite.tags[2].toFrame = baseTags[2].toFrame.frameNumber
 print("Restore last frameNumber attempt: " .. sprite.tags[2].toFrame.frameNumber)
 --this prints a 5
+
 --change frame number manually
 sprite.tags[2].toFrame = 4
---this works... but impractical
+--this works... but impractical (oddly enough, toFrame is supposed to be a frame object btw)
 
+--Second try, with tag names
 --change the tag names
 for i,tag in ipairs(sprite.tags) do
 	tag.name = "New Title " .. i
@@ -44,6 +50,7 @@ print("---current tags---")
 for i,tag in ipairs(sprite.tags) do
 	print(tag.name) 
 end
+
 -- the cached copy has also been modified:
 print("---cached tags---") 
 for i in ipairs(baseTags) do
