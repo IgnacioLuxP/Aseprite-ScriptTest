@@ -1,5 +1,5 @@
 -- Aseprite Forums thread for this issue:
--- 
+-- https://community.aseprite.org/t/need-a-little-help-caching-tag-names/10837
 
 function cacheTags(_sprite)
 	local _baseTags = {} -- LOCAL variable
